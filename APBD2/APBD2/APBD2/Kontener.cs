@@ -32,4 +32,9 @@ public abstract class Kontener : IKontenerInterface
         }
         MasaLadunku = masaLadunkuArgument;
     }
+
+    public double GetMasaKontenera()
+    {
+        return MasaLadunku + WagaWlasnaKontenera;
+    }
 }
