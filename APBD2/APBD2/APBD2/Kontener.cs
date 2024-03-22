@@ -1,51 +1,35 @@
 ﻿namespace APBD2;
 
-public class Kontener
+public abstract class Kontener : IKontenerInterface
 {
-    // masa ładunku w kilogramach
-    private int _masaLadunku;
-    // wysokośc kontenera w centymetrach
-    private int _wysokosc;
-    // masa kontenera w kilogramach
-    private int _masaSamegoKontenera;
-    // głębokość kontenera w centymetrach
-    private int _glebokoscKontenera;
-    // maksymalna ładowność kontenera w kilogramach
-    private int _maksymalnaLadownoscKontenera;
-    // numer seryjny kontenera 
-    private static int _numerSeryjnyKontenera = 0;
-    // konstruktor kontenera 
-    public Kontener(int wysokosc, int masaSamegoKontenera, int glebokoscKontenera, int maksymalnaLadownoscKontenera)
+    private static int _idKontenera = 0;
+    public string IdKontenera { get; }
+    protected double WysokoscKontenera { get; }
+    protected double WagaWlasnaKontenera { get; }
+    protected double GlebokoscKontenera { get; }
+    protected double MaksymalnaLadownoscKontenera { get; }
+    protected double MasaLadunku { get; set; }
+
+    public Kontener(double wysokoscKontenera, double wagaWlasnaKontenera, double glebokoscKontenera, double maksymalnaLadownoscKontenera, string typKontenera)
     {
-        _wysokosc = wysokosc;
-        _masaSamegoKontenera = masaSamegoKontenera;
-        _glebokoscKontenera = glebokoscKontenera;
-        _maksymalnaLadownoscKontenera = maksymalnaLadownoscKontenera;
-        _numerSeryjnyKontenera++;
+        WysokoscKontenera = wysokoscKontenera;
+        WagaWlasnaKontenera = wagaWlasnaKontenera;
+        GlebokoscKontenera = glebokoscKontenera;
+        MaksymalnaLadownoscKontenera = maksymalnaLadownoscKontenera;
+        IdKontenera = $"KON-{typKontenera}-{++_idKontenera}";
+    }
+    public virtual void OproznijKontener()
+    {
+        MasaLadunku = 0;
+        Console.WriteLine("Kontener oprozniony");
     }
 
-    public int GetWysokosc()
+    public virtual void ZaladujKontener(double masaLadunkuArgument)
     {
-        return _wysokosc;
-    }
-
-    public int GetMasaSamegoKontenera()
-    {
-        return _masaSamegoKontenera;
-    }
-
-    public int GetGlebokoscKontenera()
-    {
-        return _glebokoscKontenera;
-    }
-
-    public int GetMaksymalnaLadownoscKontenera()
-    {
-        return _maksymalnaLadownoscKontenera;
-    }
-
-    public int GetNumerSeryjnyKontenera()
-    {
-        return _numerSeryjnyKontenera;
+        if (masaLadunkuArgument > MaksymalnaLadownoscKontenera)
+        {
+            throw new OverfillException("Niewystarczajaca ladownosc kontenera");
+        }
+        MasaLadunku = masaLadunkuArgument;
     }
 }
