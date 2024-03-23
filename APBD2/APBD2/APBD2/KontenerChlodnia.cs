@@ -42,6 +42,7 @@ public class KontenerChlodnia : Kontener
                 Temperatura = 19;
                 break;
         }
+        Console.WriteLine("Stworzono poprawnie kontener typu chlodnia");
         
     }
 

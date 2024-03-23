@@ -12,6 +12,7 @@ public class Kontenerowiec
     public Kontenerowiec(double predkoscWezlach, int maksymalnaLiczbaPrzewozonychKontenerow,
         double maksymalnaWagaPrzewozonychKontenerow)
     {
+        Console.WriteLine("Stowrzono kontenerowiec");
         _predkoscWezlach = predkoscWezlach;
         _maksymalnaLiczbaPrzewozonychKontenerow = maksymalnaLiczbaPrzewozonychKontenerow;
         _maksymalnaWagaPrzewozonychKontenerow = maksymalnaWagaPrzewozonychKontenerow;
@@ -100,12 +101,17 @@ public class Kontenerowiec
         }
     }
 
+    public void PokazListeKontenerow()
+    {
+        _listaKontenerow.ForEach(Console.WriteLine);
+    }
+
     public override string ToString()
     {
+        PokazListeKontenerow();
         return "Id kontenerowca to " + _idKontenerowca + "\n" +
                "Maksymalna predkosc kontenerowca to " + _predkoscWezlach + "\n" +
                "Maksymalna ilosc kontenerow na statku to " + _maksymalnaLiczbaPrzewozonychKontenerow + "\n" +
-               "Maksymalna waga kontenerow na statku to " + _maksymalnaWagaPrzewozonychKontenerow + "\n" +
-               _listaKontenerow.ToString();
+               "Maksymalna waga kontenerow na statku to " + _maksymalnaWagaPrzewozonychKontenerow + "\n";
     }
 }

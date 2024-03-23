@@ -7,6 +7,7 @@ public class KontenerGaz : Kontener, IHazardNotifier
     public KontenerGaz(double wysokoscKontenera, double wagaWlasnaKontenera, double glebokoscKontenera, double maksymalnaLadownoscKontenera, double cisnienie)
         : base(wysokoscKontenera, wagaWlasnaKontenera, glebokoscKontenera, maksymalnaLadownoscKontenera,"G")
     {
+        Console.WriteLine("Stworzono poprawnie kontener na gaz");
         Cisnienie = cisnienie;
     }
     public void WyslijInformacjeONiebezpiecznymLadunku(string wiadomosc)

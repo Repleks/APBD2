@@ -8,6 +8,7 @@ public class KontenerPlyn : Kontener, IHazardNotifier
         double maksymalnaLadownoscKontenera, bool czyNiebezpieczny)
         : base(wysokoscKontenera, wagaWlasnaKontenera, glebokoscKontenera, maksymalnaLadownoscKontenera,"L")
     {
+        Console.WriteLine("Stworzono poprawnie kontener na plyn");
         _czyNiebezpiecznyMaterial = czyNiebezpieczny;
     }
     
